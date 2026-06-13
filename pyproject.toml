@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nwt-analysis"
+version = "0.1.0"
+description = "Reproduction code for the Null Worldtube Theory papers: per-paper analysis drivers that compute each paper's published figures and numbers on top of nwt-substrate and jax-solitons."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+  { name = "James P. Galasyn" },
+  { name = "Claude Théodore" },
+]
+keywords = [
+  "null-worldtube", "topological-physics", "reproduction",
+  "knot-theory", "neutrinos", "quantum-error-correction",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Physics",
+]
+# Core deps are what the reproduction drivers actually import. Kept PyPI-safe
+# (no direct URLs). The heavier upstreams (nwt-substrate, jax-solitons) are an
+# OPTIONAL extra below because they are not on PyPI yet — same pattern
+# jax-solitons uses for its nwt-substrate oracle dep.
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+# The NWT field-theory upstreams. Until they publish to PyPI, install from git
+# (DOI-pinned tags preferred — see nwt-substrate's code_division_policy).
+# Drivers that need them import lazily so the rest of the package installs from
+# PyPI without these.
+engine = [
+  "nwt-substrate @ git+https://github.com/JimGalasyn/nwt-substrate.git@v0.5.0",
+  "jax-solitons @ git+https://github.com/JimGalasyn/jax-solitons.git",
+]
+test = [
+  "pytest>=8",
+]
+
+[project.scripts]
+# One dispatcher rather than 56 console scripts. `nwt-repro list` enumerates the
+# reproductions; `nwt-repro run <key> -- ...` runs one.
+nwt-repro = "nwt_analysis.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nwt_analysis"]
+
+# The `engine` extra pins git upstreams (not on PyPI yet); hatchling requires
+# this opt-in to allow direct-reference deps. The published-to-PyPI core has no
+# direct refs, so a plain `pip install nwt-analysis` is unaffected.
+[tool.hatch.metadata]
+allow-direct-references = true
+
+# Only collect the curated test suite. The reproduction drivers contain their own
+# functions named test_* (paper-internal checks, not pytest cases) which must not
+# be auto-collected.
+[tool.pytest.ini_options]
+testpaths = ["tests"]
