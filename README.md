@@ -19,9 +19,13 @@ pip install nwt-analysis            # core (numpy/scipy/matplotlib) drivers
 pip install "nwt-analysis[engine]"  # + nwt-substrate & jax-solitons (field-theory drivers)
 ```
 
-Until the upstreams publish to PyPI, the `engine` extra installs them from git
-(DOI-pinned tags). Drivers that need the engine import it lazily, so the core
-install works on its own.
+Until the upstreams publish to PyPI, install them from git (DOI-pinned tags):
+
+```bash
+pip install -e . -r requirements-engine.txt
+```
+
+Drivers that need the engine import it lazily, so the core install works on its own.
 
 ## Use
 

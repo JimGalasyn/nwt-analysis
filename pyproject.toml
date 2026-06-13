@@ -35,13 +35,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# The NWT field-theory upstreams. Until they publish to PyPI, install from git
-# (DOI-pinned tags preferred — see nwt-substrate's code_division_policy).
-# Drivers that need them import lazily so the rest of the package installs from
-# PyPI without these.
+# The NWT field-theory upstreams, as PyPI-legal version specifiers (PyPI forbids
+# direct-reference git URLs in published metadata). They are not on PyPI yet —
+# until they are, install them from git via `requirements-engine.txt` (DOI-pinned
+# tags). Drivers that need them import lazily, so the core installs without these.
 engine = [
-  "nwt-substrate @ git+https://github.com/JimGalasyn/nwt-substrate.git@v0.5.0",
-  "jax-solitons @ git+https://github.com/JimGalasyn/jax-solitons.git",
+  "nwt-substrate>=0.5",
+  "jax-solitons>=0.0.1",
 ]
 test = [
   "pytest>=8",
@@ -54,12 +54,6 @@ nwt-repro = "nwt_analysis.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/nwt_analysis"]
-
-# The `engine` extra pins git upstreams (not on PyPI yet); hatchling requires
-# this opt-in to allow direct-reference deps. The published-to-PyPI core has no
-# direct refs, so a plain `pip install nwt-analysis` is unaffected.
-[tool.hatch.metadata]
-allow-direct-references = true
 
 # Only collect the curated test suite. The reproduction drivers contain their own
 # functions named test_* (paper-internal checks, not pytest cases) which must not
