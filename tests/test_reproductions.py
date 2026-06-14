@@ -31,8 +31,10 @@ def test_script_compiles(path: Path):
     py_compile.compile(str(path), doraise=True)
 
 
-def test_dispatcher_discovers_all_paper_drivers():
+def test_dispatcher_discovers_all_scripts():
+    # The dispatcher resolves both paper reproductions and supporting scripts so
+    # `nwt-repro run <name>` works for any script cited in a paper.
     from nwt_analysis.cli import _discover
     found = _discover()
-    assert len(found) == len(PAPER_DRIVERS), (
-        f"dispatcher found {len(found)} but {len(PAPER_DRIVERS)} paper drivers on disk")
+    assert len(found) == len(ALL_SCRIPTS), (
+        f"dispatcher found {len(found)} but {len(ALL_SCRIPTS)} scripts on disk")

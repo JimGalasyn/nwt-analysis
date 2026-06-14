@@ -24,7 +24,7 @@ def _discover() -> dict[str, str]:
     import nwt_analysis
     found: dict[str, str] = {}
     for pkg in pkgutil.iter_modules(nwt_analysis.__path__):
-        if not pkg.ispkg or not pkg.name.startswith("paper"):
+        if not pkg.ispkg or not (pkg.name.startswith("paper") or pkg.name == "supporting"):
             continue
         sub = importlib.import_module(f"nwt_analysis.{pkg.name}")
         for mod in pkgutil.iter_modules(sub.__path__):
@@ -69,7 +69,7 @@ def main(argv: list[str] | None = None) -> int:
             if pkg != cur:
                 print(f"\n{pkg}"); cur = pkg
             print(f"  {k.split('/', 1)[1]}")
-        print(f"\n{len(keys)} reproduction(s).")
+        print(f"\n{len(keys)} script(s) (paperNN_* = reproductions; supporting/ = shared analysis).")
         return 0
 
     mod = _resolve(a.key, found)
