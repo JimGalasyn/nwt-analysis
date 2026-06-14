@@ -12,6 +12,25 @@ Papers cite it by `pip install` + a Zenodo software DOI rather than linking loos
 scripts — so a reader can reproduce a result without chasing files across repos.
 See [`REPRODUCTIONS.md`](REPRODUCTIONS.md) for the full script → paper map.
 
+## Scope and rigor (read before assuming uniform validation)
+
+This repo holds **two kinds of code**, and they are **not** held to the same bar:
+
+- **(a) Reproduction drivers over the engines** — configurations and analyses
+  built on `nwt-substrate` / `jax-solitons`. These inherit the upstreams'
+  validation (jax-solitons' exactness gates, nwt-substrate's cross-engine
+  oracle); a green driver means the published number reproduces against a
+  validated engine.
+- **(b) Standalone numerical methods outside the engines' scope-by-design** —
+  e.g. the BPS-Helmholtz κ eigenvalue solver lives here because
+  `jax-solitons` is, by design (its DESIGN.md P3), an energy-functional-on-a-
+  periodic-lattice engine and does **not** do eigenvalue problems on closed
+  curved manifolds. These carry their own, independent validation.
+
+Do not assume a result in (b) inherits an engine's rigor. Each module's
+docstring/README states its validation status; treat per-module status as the
+source of truth, not the repo as a whole.
+
 ## Install
 
 ```bash

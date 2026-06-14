@@ -39,9 +39,15 @@ dependencies = [
 # direct-reference git URLs in published metadata). They are not on PyPI yet —
 # until they are, install them from git via `requirements-engine.txt` (DOI-pinned
 # tags). Drivers that need them import lazily, so the core installs without these.
+# Compatible-range pins, NOT floors: jax-solitons is pre-alpha 0.0.x and
+# "changes API without notice until 0.1", so a bare floor would let a breaking
+# engine release silently break `pip install nwt-analysis[engine]` for someone
+# who never touched the engine directly. Bump intentionally when re-validating
+# against a newer upstream. Exact per-paper provenance lives in
+# requirements-engine.txt / REPRODUCTIONS.md (the audit trail for paper claims).
 engine = [
-  "nwt-substrate>=0.5",
-  "jax-solitons>=0.0.1",
+  "nwt-substrate>=0.5,<0.6",
+  "jax-solitons>=0.0.2,<0.0.3",
 ]
 test = [
   "pytest>=8",

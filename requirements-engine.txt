@@ -4,4 +4,4 @@
 # Until nwt-substrate / jax-solitons publish to PyPI, install them with:
 #     pip install -e . -r requirements-engine.txt
 nwt-substrate @ git+https://github.com/JimGalasyn/nwt-substrate.git@v0.5.0
-jax-solitons @ git+https://github.com/JimGalasyn/jax-solitons.git
+jax-solitons @ git+https://github.com/JimGalasyn/jax-solitons.git@v0.0.2
