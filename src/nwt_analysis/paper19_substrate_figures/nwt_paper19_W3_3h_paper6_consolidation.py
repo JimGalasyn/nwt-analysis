@@ -84,7 +84,7 @@ def nq_enhancement(nq: int, q: int) -> float:
     return val if (np.isfinite(val) and val < 1e30) else float("nan")
 
 
-def paper6_mass_ratio(p: int, q: int, m_int: int, nq: int) -> float:
+def paper6_mass_ratio(p: int, q: int, m_int: int, nq: int) -> float:  # reconcile: allow-dup -- self-contained reproduction snapshot of the Paper 6 formula (nwt_substrate.particles.mass owns the canonical one)
     b = beta_from_phase_closure(p, m_int)
     if not np.isfinite(b):
         return float("nan")
