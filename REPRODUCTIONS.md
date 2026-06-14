@@ -7,6 +7,14 @@ exploratory analysis scripts not tied to one paper's reproduction.
 
 **85 paper-reproduction drivers across 11 modules; 81 supporting scripts.**
 
+> **Provenance / audit trail.** The numbers in a *published* paper trace to a
+> specific engine state, not just to this repo's HEAD. `requirements-engine.txt`
+> pins the upstreams to DOI-backed release tags (`nwt-substrate@v0.5.0`,
+> `jax-solitons@v0.0.2`); the `[engine]` extra in `pyproject.toml` carries
+> compatible-range (not floor) pins so a breaking engine release cannot silently
+> change a reproduction. When a paper is submitted, record the exact engine tags
+> it was reproduced against so a referee can resolve claim → commit.
+
 
 ## Paper reproductions
 
