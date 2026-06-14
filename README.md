@@ -46,8 +46,14 @@ src/nwt_analysis/
   paper07_knot_invariants/  paper18_gravity/       paper21_boson_rep/
   paper08_ewk_couplings/    paper19_substrate_figures/  paper22_baryogenesis/
   paper09_lepton_observables/  paper13_spectrum/
+  supporting/               # shared / exploratory analysis, not one paper's reproduction
   cli.py                    # the nwt-repro dispatcher
 ```
+
+`paperNN_*/` modules hold each paper's reproduction drivers (discoverable via
+`nwt-repro`). `supporting/` holds shared and exploratory analysis scripts that
+aren't tied to a single paper's reproduction (consolidated here from the old
+`null-worldtube/analysis` directory). See [`REPRODUCTIONS.md`](REPRODUCTIONS.md).
 
 ## Relationship to the other repos
 
