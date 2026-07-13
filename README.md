@@ -1,5 +1,19 @@
 # nwt-analysis
 
+> ## ⛔ RETIRED — July 2026
+>
+> **The Null Worldtube Theory program is retired; its physical claims did not
+> survive precision audit.** This repository is the papers' reproduction code —
+> it still runs, but the numbers it reproduces are postdictions, not confirmed
+> predictions. The 22 papers it reproduces are marked *obsolete* on Zenodo, and
+> the physics library it builds on ([nwt-substrate](https://github.com/JimGalasyn/nwt-substrate))
+> is deprecated. The one surviving maintained artifact of the program is
+> [jax-solitons](https://github.com/JimGalasyn/jax-solitons).
+>
+> Full accounting: **[Retirement Retrospective](https://doi.org/10.5281/zenodo.21339662)**
+> (Zenodo, DOI [10.5281/zenodo.21339662](https://doi.org/10.5281/zenodo.21339662)).
+> This repo is archived read-only as part of the record.
+
 Reproduction code for the **Null Worldtube Theory** papers. Each module under
 `src/nwt_analysis/paperNN_*/` is a driver that computes a published paper's
 figures and numbers, built on top of the NWT field-theory upstreams
