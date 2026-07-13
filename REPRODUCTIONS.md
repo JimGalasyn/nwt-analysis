@@ -5,7 +5,7 @@ reproduction drivers (run with `nwt-repro run <name>`); `supporting/` holds shar
 exploratory analysis scripts not tied to one paper's reproduction.
 
 
-**85 paper-reproduction drivers across 11 modules; 81 supporting scripts.**
+**85 paper-reproduction drivers across 11 modules; 82 supporting scripts.**
 
 > **Provenance / audit trail.** The numbers in a *published* paper trace to a
 > specific engine state, not just to this repo's HEAD. `requirements-engine.txt`
@@ -166,6 +166,7 @@ Shared/exploratory analysis not a single paper's reproduction:
 - `nwt_qec_zne_reanalysis.py`
 - `nwt_rational_decomposition_methodology.py`
 - `nwt_residual_histogram.py`
+- `nwt_robinson_nuclear.py`
 - `nwt_rybakov_path_a.py`
 - `nwt_self_consistent_knot_v3.py`
 - `nwt_spin7_chain_b2_5.py`
